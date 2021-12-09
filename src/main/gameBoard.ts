@@ -51,6 +51,21 @@ export class GameBoard {
         Location.CENTRE_LEFT,
         Location.CENTRE_MIDDLE,
         Location.CENTRE_RIGHT,
+      ]) ||
+      this.allLocationsAreX([
+        Location.BOTTOM_LEFT,
+        Location.BOTTOM_MIDDLE,
+        Location.BOTTOM_RIGHT,
+      ]) ||
+      this.allLocationsAreX([
+        Location.TOP_LEFT,
+        Location.CENTRE_MIDDLE,
+        Location.BOTTOM_RIGHT,
+      ]) ||
+      this.allLocationsAreX([
+        Location.TOP_RIGHT,
+        Location.CENTRE_MIDDLE,
+        Location.BOTTOM_LEFT,
       ])
     );
   }

@@ -73,77 +73,145 @@ describe("tictactoe", () => {
     });
   });
 
-  type TestTuple = [string, Location[], string]
+  type TestTuple = [string, Location[], string];
 
-  const testCases: TestTuple[] =
-  [
+  const testCases: TestTuple[] = [
     [
       "When left column is filled",
       [
-        Location.TOP_LEFT, Location.TOP_RIGHT, Location.CENTRE_LEFT, Location.CENTRE_RIGHT, Location.BOTTOM_LEFT
+        Location.TOP_LEFT,
+        Location.TOP_RIGHT,
+        Location.CENTRE_LEFT,
+        Location.CENTRE_RIGHT,
+        Location.BOTTOM_LEFT,
       ],
-      "Congratulations! X has won"
+      "Congratulations! X has won",
     ],
     [
       "When middle column is filled",
       [
-        Location.TOP_MIDDLE, Location.CENTRE_LEFT, Location.CENTRE_MIDDLE, Location.BOTTOM_RIGHT, Location.BOTTOM_MIDDLE
+        Location.TOP_MIDDLE,
+        Location.CENTRE_LEFT,
+        Location.CENTRE_MIDDLE,
+        Location.BOTTOM_RIGHT,
+        Location.BOTTOM_MIDDLE,
       ],
-      "Congratulations! X has won"
+      "Congratulations! X has won",
     ],
     [
       "When last column is filled",
       [
-        Location.TOP_RIGHT, Location.TOP_MIDDLE, Location.CENTRE_RIGHT, Location.CENTRE_MIDDLE, Location.BOTTOM_RIGHT
+        Location.TOP_RIGHT,
+        Location.TOP_MIDDLE,
+        Location.CENTRE_RIGHT,
+        Location.CENTRE_MIDDLE,
+        Location.BOTTOM_RIGHT,
       ],
-      "Congratulations! X has won"
+      "Congratulations! X has won",
     ],
     [
       "When first row is filled",
       [
-        Location.TOP_LEFT, Location.CENTRE_LEFT, Location.TOP_MIDDLE, Location.CENTRE_MIDDLE, Location.TOP_RIGHT
+        Location.TOP_LEFT,
+        Location.CENTRE_LEFT,
+        Location.TOP_MIDDLE,
+        Location.CENTRE_MIDDLE,
+        Location.TOP_RIGHT,
       ],
-      "Congratulations! X has won"
+      "Congratulations! X has won",
     ],
     [
       "When middle row is filled",
       [
-        Location.CENTRE_LEFT, Location.TOP_MIDDLE, Location.CENTRE_MIDDLE, Location.TOP_RIGHT, Location.CENTRE_RIGHT
+        Location.CENTRE_LEFT,
+        Location.TOP_MIDDLE,
+        Location.CENTRE_MIDDLE,
+        Location.TOP_RIGHT,
+        Location.CENTRE_RIGHT,
       ],
-      "Congratulations! X has won"
+      "Congratulations! X has won",
     ],
     [
       "When middle row is filled",
       [
-        Location.CENTRE_LEFT, Location.TOP_MIDDLE, Location.CENTRE_MIDDLE, Location.TOP_RIGHT, Location.CENTRE_RIGHT
+        Location.CENTRE_LEFT,
+        Location.TOP_MIDDLE,
+        Location.CENTRE_MIDDLE,
+        Location.TOP_RIGHT,
+        Location.CENTRE_RIGHT,
       ],
-      "Congratulations! X has won"
+      "Congratulations! X has won",
     ],
     [
       "When middle row is filled",
       [
-        Location.CENTRE_LEFT, Location.TOP_MIDDLE, Location.CENTRE_MIDDLE, Location.TOP_RIGHT, Location.CENTRE_RIGHT
+        Location.CENTRE_LEFT,
+        Location.TOP_MIDDLE,
+        Location.CENTRE_MIDDLE,
+        Location.TOP_RIGHT,
+        Location.CENTRE_RIGHT,
       ],
-      "Congratulations! X has won"
+      "Congratulations! X has won",
     ],
     [
       "When bottom row is filled",
       [
-        Location.BOTTOM_LEFT, Location.TOP_MIDDLE, Location.BOTTOM_MIDDLE, Location.TOP_RIGHT, Location.BOTTOM_RIGHT
+        Location.BOTTOM_LEFT,
+        Location.TOP_MIDDLE,
+        Location.BOTTOM_MIDDLE,
+        Location.TOP_RIGHT,
+        Location.BOTTOM_RIGHT,
       ],
-      "Congratulations! X has won"
+      "Congratulations! X has won",
     ],
-  ]
+    [
+      "When left diagnal is filled",
+      [
+        Location.TOP_LEFT,
+        Location.TOP_MIDDLE,
+        Location.CENTRE_MIDDLE,
+        Location.TOP_RIGHT,
+        Location.BOTTOM_RIGHT,
+      ],
+      "Congratulations! X has won",
+    ],
+    [
+      "When right diagnal is filled",
+      [
+        Location.TOP_RIGHT,
+        Location.TOP_MIDDLE,
+        Location.CENTRE_MIDDLE,
+        Location.BOTTOM_RIGHT,
+        Location.BOTTOM_LEFT,
+      ],
+      "Congratulations! X has won",
+    ],
+    [
+      "When left column is filled",
+      [
+        Location.BOTTOM_RIGHT,
+        Location.TOP_LEFT,
+        Location.BOTTOM_MIDDLE,
+        Location.CENTRE_LEFT,
+        Location.TOP_RIGHT,
+        Location.BOTTOM_LEFT,
+      ],
+      "Congratulations! O has won",
+    ],
+  ];
 
-  it.each(testCases)("%s, it renders a win message", (testName, moves, expectation) => {
+  it.each(testCases)(
+    "%s, it renders a win message",
+    (testName, moves, expectation) => {
       const game: TicTacToe = new TicTacToe();
 
       moves.forEach((move, index) => {
-        const result = game.move(move)
+        const result = game.move(move);
 
         if (index === moves.length - 1) {
-          expect(result).toEqual(expectation)
+          expect(result).toEqual(expectation);
         }
-      })
-  });
+      });
+    }
+  );
 });
