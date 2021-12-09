@@ -73,5 +73,16 @@ describe('tictactoe', () => {
 
       expect(game.move(Location.BOTTOM_LEFT)).toEqual("Congratulations! X has won")
     })
+
+    it("returns end game message last column is filled", () => {
+      let game: TicTacToe = new TicTacToe();
+
+      game.move(Location.TOP_RIGHT)
+      game.move(Location.TOP_MIDDLE)
+      game.move(Location.CENTRE_RIGHT)
+      game.move(Location.CENTRE_MIDDLE)
+
+      expect(game.move(Location.BOTTOM_RIGHT)).toEqual("Congratulations! X has won")
+    })
   })
 });
