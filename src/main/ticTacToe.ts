@@ -23,6 +23,9 @@ export class TicTacToe {
         if (this.board.checkForWin() === GamePiece.O)
             return "Congratulations! O has won"
 
+        if (this.board.checkForDraw())
+            return "Game over! It was a draw."
+
         return this.board.toArray();
     }
 }

@@ -17,5 +17,3 @@ export enum Location {
 }
 
 export type GridBoard = Record<Location, GamePiece>;
-
-console.log(Location);

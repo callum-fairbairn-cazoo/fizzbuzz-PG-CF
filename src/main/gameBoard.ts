@@ -74,7 +74,9 @@ export class GameBoard {
     );
   }
 
-  //public checkForDraw(): boolean {}
+  public checkForDraw(): boolean {
+    return Object.values(Location).every(location => this.grid[location] !== GamePiece.UNSET)
+  }
 
   public toArray(): string[][] {
     return [
@@ -96,3 +98,4 @@ export class GameBoard {
     ];
   }
 }
+console.log("Location: ", Location);
