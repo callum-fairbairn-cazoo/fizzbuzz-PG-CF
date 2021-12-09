@@ -21,35 +21,15 @@ export class GameBoard {
     return this.grid[location] === GamePiece.UNSET;
   }
 
-  private checkForLeftColumnXWin(): boolean {
-    return (
-      this.grid[Location.TOP_LEFT] === GamePiece.X &&
-      this.grid[Location.CENTRE_LEFT] === GamePiece.X &&
-      this.grid[Location.BOTTOM_LEFT] === GamePiece.X
-    );
-  }
-
-  private checkForMiddleColumnXWin(): boolean {
-    return (
-      this.grid[Location.TOP_MIDDLE] === GamePiece.X &&
-      this.grid[Location.CENTRE_MIDDLE] === GamePiece.X &&
-      this.grid[Location.BOTTOM_MIDDLE] === GamePiece.X
-    );
-  }
-
-  private checkForRightColumnXWin(): boolean {
-    return (
-      this.grid[Location.TOP_RIGHT] === GamePiece.X &&
-      this.grid[Location.CENTRE_RIGHT] === GamePiece.X &&
-      this.grid[Location.BOTTOM_RIGHT] === GamePiece.X
-    );
+  private allLocationsAreX(locations: Location[]): boolean {
+    return locations.every((location) => this.grid[location] === GamePiece.X)
   }
 
   public checkForXWin(): boolean {
     return (
-      this.checkForMiddleColumnXWin() ||
-      this.checkForLeftColumnXWin() ||
-      this.checkForRightColumnXWin()
+      this.allLocationsAreX([Location.TOP_LEFT, Location.CENTRE_LEFT, Location.BOTTOM_LEFT]) ||
+      this.allLocationsAreX([Location.TOP_MIDDLE, Location.CENTRE_MIDDLE, Location.BOTTOM_MIDDLE]) ||
+      this.allLocationsAreX([Location.TOP_RIGHT, Location.CENTRE_RIGHT, Location.BOTTOM_RIGHT])
     );
   }
 
