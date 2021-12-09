@@ -22,14 +22,36 @@ export class GameBoard {
   }
 
   private allLocationsAreX(locations: Location[]): boolean {
-    return locations.every((location) => this.grid[location] === GamePiece.X)
+    return locations.every((location) => this.grid[location] === GamePiece.X);
   }
 
   public checkForXWin(): boolean {
     return (
-      this.allLocationsAreX([Location.TOP_LEFT, Location.CENTRE_LEFT, Location.BOTTOM_LEFT]) ||
-      this.allLocationsAreX([Location.TOP_MIDDLE, Location.CENTRE_MIDDLE, Location.BOTTOM_MIDDLE]) ||
-      this.allLocationsAreX([Location.TOP_RIGHT, Location.CENTRE_RIGHT, Location.BOTTOM_RIGHT])
+      this.allLocationsAreX([
+        Location.TOP_LEFT,
+        Location.CENTRE_LEFT,
+        Location.BOTTOM_LEFT,
+      ]) ||
+      this.allLocationsAreX([
+        Location.TOP_MIDDLE,
+        Location.CENTRE_MIDDLE,
+        Location.BOTTOM_MIDDLE,
+      ]) ||
+      this.allLocationsAreX([
+        Location.TOP_RIGHT,
+        Location.CENTRE_RIGHT,
+        Location.BOTTOM_RIGHT,
+      ]) ||
+      this.allLocationsAreX([
+        Location.TOP_LEFT,
+        Location.TOP_MIDDLE,
+        Location.TOP_RIGHT,
+      ]) ||
+      this.allLocationsAreX([
+        Location.CENTRE_LEFT,
+        Location.CENTRE_MIDDLE,
+        Location.CENTRE_RIGHT,
+      ])
     );
   }
 
