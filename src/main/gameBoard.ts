@@ -15,17 +15,26 @@ export class GameBoard {
 
     public setLocation(location: Location, piece: GamePiece) {
         this.grid[location] = piece;
-        console.log(`Set ${location.toString()} to ${piece}`)
     }
 
     public isLocationFree(location: Location): boolean {
         return this.grid[location] === GamePiece.UNSET
     }
 
-    public checkForXWin(): boolean {
+    private checkForLeftColumnXWin(): boolean {
+        return this.grid[Location.TOP_LEFT] === GamePiece.X &&
+          this.grid[Location.CENTRE_LEFT] === GamePiece.X &&
+          this.grid[Location.BOTTOM_LEFT] === GamePiece.X
+    }
+
+    private checkForMiddleColumnXWin(): boolean {
         return this.grid[Location.TOP_MIDDLE] === GamePiece.X &&
-            this.grid[Location.CENTRE_MIDDLE] === GamePiece.X &&
-            this.grid[Location.BOTTOM_MIDDLE] === GamePiece.X
+          this.grid[Location.CENTRE_MIDDLE] === GamePiece.X &&
+          this.grid[Location.BOTTOM_MIDDLE] === GamePiece.X
+    }
+
+    public checkForXWin(): boolean {
+        return this.checkForMiddleColumnXWin() || this.checkForLeftColumnXWin()
     }
 
     public toArray(): string[][] {
