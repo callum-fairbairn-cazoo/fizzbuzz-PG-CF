@@ -1,5 +1,5 @@
-import {GameBoard} from "./gameBoard";
-import {GamePiece, Location} from "./types";
+import { GameBoard } from "./gameBoard";
+import { GamePiece, Location } from "./types";
 
 export class TicTacToe {
     board = new GameBoard()
@@ -17,8 +17,11 @@ export class TicTacToe {
         this.board.setLocation(location, pieceToPlay);
         this.lastPiecePlayed = pieceToPlay;
 
-        if (this.board.checkForXWin())
+        if (this.board.checkForWin() === GamePiece.X)
             return "Congratulations! X has won"
+
+        if (this.board.checkForWin() === GamePiece.O)
+            return "Congratulations! O has won"
 
         return this.board.toArray();
     }

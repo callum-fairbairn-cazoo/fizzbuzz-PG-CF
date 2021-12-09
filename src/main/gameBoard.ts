@@ -21,48 +21,50 @@ export class GameBoard {
     return this.grid[location] === GamePiece.UNSET;
   }
 
-  private allLocationsAreX(locations: Location[]): boolean {
-    return locations.every((location) => this.grid[location] === GamePiece.X);
+  private allLocationsAreSamePiece(locations: Location[]): GamePiece {
+    if (locations.every((location) => this.grid[location] === GamePiece.X)) return GamePiece.X
+    if (locations.every((location) => this.grid[location] === GamePiece.O)) return GamePiece.O
+    return GamePiece.UNSET
   }
 
-  public checkForXWin(): boolean {
+  public checkForWin(): GamePiece {
     return (
-      this.allLocationsAreX([
+      this.allLocationsAreSamePiece([
         Location.TOP_LEFT,
         Location.CENTRE_LEFT,
         Location.BOTTOM_LEFT,
       ]) ||
-      this.allLocationsAreX([
+      this.allLocationsAreSamePiece([
         Location.TOP_MIDDLE,
         Location.CENTRE_MIDDLE,
         Location.BOTTOM_MIDDLE,
       ]) ||
-      this.allLocationsAreX([
+      this.allLocationsAreSamePiece([
         Location.TOP_RIGHT,
         Location.CENTRE_RIGHT,
         Location.BOTTOM_RIGHT,
       ]) ||
-      this.allLocationsAreX([
+      this.allLocationsAreSamePiece([
         Location.TOP_LEFT,
         Location.TOP_MIDDLE,
         Location.TOP_RIGHT,
       ]) ||
-      this.allLocationsAreX([
+      this.allLocationsAreSamePiece([
         Location.CENTRE_LEFT,
         Location.CENTRE_MIDDLE,
         Location.CENTRE_RIGHT,
       ]) ||
-      this.allLocationsAreX([
+      this.allLocationsAreSamePiece([
         Location.BOTTOM_LEFT,
         Location.BOTTOM_MIDDLE,
         Location.BOTTOM_RIGHT,
       ]) ||
-      this.allLocationsAreX([
+      this.allLocationsAreSamePiece([
         Location.TOP_LEFT,
         Location.CENTRE_MIDDLE,
         Location.BOTTOM_RIGHT,
       ]) ||
-      this.allLocationsAreX([
+      this.allLocationsAreSamePiece([
         Location.TOP_RIGHT,
         Location.CENTRE_MIDDLE,
         Location.BOTTOM_LEFT,

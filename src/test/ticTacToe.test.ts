@@ -198,6 +198,21 @@ describe("tictactoe", () => {
       ],
       "Congratulations! O has won",
     ],
+    [
+      "When the game is a draw",
+      [
+        Location.TOP_LEFT,
+        Location.TOP_MIDDLE,
+        Location.TOP_RIGHT,
+        Location.CENTRE_LEFT,
+        Location.CENTRE_RIGHT,
+        Location.CENTRE_MIDDLE,
+        Location.BOTTOM_LEFT,
+        Location.BOTTOM_RIGHT,
+        Location.BOTTOM_MIDDLE,
+      ],
+      "Game over! It was a draw.",
+    ],
   ];
 
   it.each(testCases)(
