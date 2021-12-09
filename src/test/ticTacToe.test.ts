@@ -73,70 +73,77 @@ describe("tictactoe", () => {
     });
   });
 
-  describe("When a player has won", () => {
-    it("returns end game message when the middle column is filled", () => {
-      let game: TicTacToe = new TicTacToe();
+  type TestTuple = [string, Location[], string]
 
-      game.move(Location.TOP_MIDDLE);
-      game.move(Location.CENTRE_LEFT);
-      game.move(Location.CENTRE_MIDDLE);
-      game.move(Location.BOTTOM_RIGHT);
+  const testCases: TestTuple[] =
+  [
+    [
+      "When left column is filled",
+      [
+        Location.TOP_LEFT, Location.TOP_RIGHT, Location.CENTRE_LEFT, Location.CENTRE_RIGHT, Location.BOTTOM_LEFT
+      ],
+      "Congratulations! X has won"
+    ],
+    [
+      "When middle column is filled",
+      [
+        Location.TOP_MIDDLE, Location.CENTRE_LEFT, Location.CENTRE_MIDDLE, Location.BOTTOM_RIGHT, Location.BOTTOM_MIDDLE
+      ],
+      "Congratulations! X has won"
+    ],
+    [
+      "When last column is filled",
+      [
+        Location.TOP_RIGHT, Location.TOP_MIDDLE, Location.CENTRE_RIGHT, Location.CENTRE_MIDDLE, Location.BOTTOM_RIGHT
+      ],
+      "Congratulations! X has won"
+    ],
+    [
+      "When first row is filled",
+      [
+        Location.TOP_LEFT, Location.CENTRE_LEFT, Location.TOP_MIDDLE, Location.CENTRE_MIDDLE, Location.TOP_RIGHT
+      ],
+      "Congratulations! X has won"
+    ],
+    [
+      "When middle row is filled",
+      [
+        Location.CENTRE_LEFT, Location.TOP_MIDDLE, Location.CENTRE_MIDDLE, Location.TOP_RIGHT, Location.CENTRE_RIGHT
+      ],
+      "Congratulations! X has won"
+    ],
+    [
+      "When middle row is filled",
+      [
+        Location.CENTRE_LEFT, Location.TOP_MIDDLE, Location.CENTRE_MIDDLE, Location.TOP_RIGHT, Location.CENTRE_RIGHT
+      ],
+      "Congratulations! X has won"
+    ],
+    [
+      "When middle row is filled",
+      [
+        Location.CENTRE_LEFT, Location.TOP_MIDDLE, Location.CENTRE_MIDDLE, Location.TOP_RIGHT, Location.CENTRE_RIGHT
+      ],
+      "Congratulations! X has won"
+    ],
+    [
+      "When bottom row is filled",
+      [
+        Location.BOTTOM_LEFT, Location.TOP_MIDDLE, Location.BOTTOM_MIDDLE, Location.TOP_RIGHT, Location.BOTTOM_RIGHT
+      ],
+      "Congratulations! X has won"
+    ],
+  ]
 
-      expect(game.move(Location.BOTTOM_MIDDLE)).toEqual(
-        "Congratulations! X has won"
-      );
-    });
+  it.each(testCases)("%s, it renders a win message", (testName, moves, expectation) => {
+      const game: TicTacToe = new TicTacToe();
 
-    it("returns end game message first column is filled", () => {
-      let game: TicTacToe = new TicTacToe();
+      moves.forEach((move, index) => {
+        const result = game.move(move)
 
-      game.move(Location.TOP_LEFT);
-      game.move(Location.TOP_RIGHT);
-      game.move(Location.CENTRE_LEFT);
-      game.move(Location.CENTRE_RIGHT);
-
-      expect(game.move(Location.BOTTOM_LEFT)).toEqual(
-        "Congratulations! X has won"
-      );
-    });
-
-    it("returns end game message last column is filled", () => {
-      let game: TicTacToe = new TicTacToe();
-
-      game.move(Location.TOP_RIGHT);
-      game.move(Location.TOP_MIDDLE);
-      game.move(Location.CENTRE_RIGHT);
-      game.move(Location.CENTRE_MIDDLE);
-
-      expect(game.move(Location.BOTTOM_RIGHT)).toEqual(
-        "Congratulations! X has won"
-      );
-    });
-
-    it("returns end game message first row is filled", () => {
-      let game: TicTacToe = new TicTacToe();
-
-      game.move(Location.TOP_LEFT);
-      game.move(Location.CENTRE_LEFT);
-      game.move(Location.TOP_MIDDLE);
-      game.move(Location.CENTRE_MIDDLE);
-
-      expect(game.move(Location.TOP_RIGHT)).toEqual(
-        "Congratulations! X has won"
-      );
-    });
-
-    it("returns end game message middle row is filled", () => {
-      let game: TicTacToe = new TicTacToe();
-
-      game.move(Location.CENTRE_LEFT);
-      game.move(Location.TOP_MIDDLE);
-      game.move(Location.CENTRE_MIDDLE);
-      game.move(Location.TOP_RIGHT);
-
-      expect(game.move(Location.CENTRE_RIGHT)).toEqual(
-        "Congratulations! X has won"
-      );
-    });
+        if (index === moves.length - 1) {
+          expect(result).toEqual(expectation)
+        }
+      })
   });
 });
