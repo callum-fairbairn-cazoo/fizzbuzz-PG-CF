@@ -22,9 +22,11 @@ export class GameBoard {
   }
 
   private allLocationsAreSamePiece(locations: Location[]): GamePiece {
-    if (locations.every((location) => this.grid[location] === GamePiece.X)) return GamePiece.X
-    if (locations.every((location) => this.grid[location] === GamePiece.O)) return GamePiece.O
-    return GamePiece.UNSET
+    if (locations.every((location) => this.grid[location] === GamePiece.X))
+      return GamePiece.X;
+    if (locations.every((location) => this.grid[location] === GamePiece.O))
+      return GamePiece.O;
+    return GamePiece.UNSET;
   }
 
   public checkForWin(): GamePiece {
@@ -71,6 +73,8 @@ export class GameBoard {
       ])
     );
   }
+
+  //public checkForDraw(): boolean {}
 
   public toArray(): string[][] {
     return [
